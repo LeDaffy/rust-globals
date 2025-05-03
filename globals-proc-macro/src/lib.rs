@@ -55,18 +55,16 @@ impl quote::ToTokens for Declaration {
             None => {
                 let var_name_init = Ident::new((self.var_name.clone().to_string().to_lowercase() + "_init").as_str(), self.var_name.span());
                 tokens.extend(quote! {
-                    static mut #var_name: #var_type = unsafe { std::mem::zeroed::<#var_type>() };
+                    static mut #var_name: globals::UninitializedGlobal<#var_type> = globals::UninitializedGlobal::uninit();
 
                     pub fn #var_name_init<F: std::ops::FnMut() -> #var_type >(mut f: F) {
                         unsafe {
-                            #var_name = f();
+                            #var_name = globals::UninitializedGlobal::new(f());
                         }
                     }
 
                     pub fn #var_name_lower() -> &'static mut #var_type {
-                        unsafe {
-                            &mut *(&raw mut #var_name)
-                        }
+                        globals::uninit_as_ref_mut(&raw mut #var_name)
                     }
                 });
 
