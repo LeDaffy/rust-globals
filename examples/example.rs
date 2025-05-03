@@ -16,7 +16,9 @@ fn main() {
     my_global3_init(|| { 0 });
     global_string_init(|| { String::from("asdf") });
     *my_global3() = 14;
+    *my_global3() = 23;
     *global_string() = String::from("asdf");
+    (*global_string()).push_str("qwerty");
 
     println!("Hello, {}, {}, {}", my_global(), my_global3(), global_string());
 
