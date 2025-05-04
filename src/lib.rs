@@ -2,7 +2,7 @@ pub use globals_proc_macro::unsafe_global;
 
 pub union UninitializedGlobal<T> {
     uninit: (),
-    value: std::mem::ManuallyDrop<T>,
+    value: core::mem::ManuallyDrop<T>,
 }
 
 impl<T> UninitializedGlobal<T> {
@@ -10,7 +10,7 @@ impl<T> UninitializedGlobal<T> {
         Self { uninit: () }
     }
     pub const fn new(value: T) -> Self {
-        Self { value: std::mem::ManuallyDrop::new(value) }
+        Self { value: core::mem::ManuallyDrop::new(value) }
     }
 }
 

@@ -15,7 +15,7 @@ If the variable has no initializer, an init function is generated:
 
 ```rust
 #[unsafe_global]
-static mut MY_GLOBAL: u32 = 0;
+static mut MY_GLOBAL: u32;
 
 /// Provided by macro
 pub fn my_global() -> &mut u32;
