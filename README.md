@@ -1,6 +1,9 @@
 # rust-globals
 
-A crate for working with global variables in rust. Provides an attribute macro `#[unsafe_global]` applied to global variable declartions:
+A crate for working with global variables in rust. Provides an attribute macro `#[unchecked_global]` and `#[checked_global]` which can be applied to global variable declartions. Checked globals are checked at run time to ensure the value was initialized. Unchecked globals have no checking for initiailation.
+
+
+### Examples
 
 
 ```rust
