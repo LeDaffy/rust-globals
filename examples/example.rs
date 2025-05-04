@@ -1,12 +1,12 @@
-use globals::unsafe_global;
+use globals::unchecked_global;
 
-#[unsafe_global]
+#[unchecked_global]
 static mut MY_GLOBAL: u32 = 0;
 
-#[unsafe_global]
+#[unchecked_global]
 static mut MY_GLOBAL3: u32;
 
-#[unsafe_global]
+#[unchecked_global]
 static mut GLOBAL_STRING: String;
 
 fn prints(string: &String) {

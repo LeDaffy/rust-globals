@@ -1,4 +1,4 @@
-pub use globals_proc_macro::unsafe_global;
+pub use globals_proc_macro::unchecked_global;
 
 pub union UninitializedGlobal<T> {
     uninit: (),

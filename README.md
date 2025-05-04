@@ -4,7 +4,7 @@ A crate for working with global variables in rust. Provides an attribute macro `
 
 
 ```rust
-#[unsafe_global]
+#[unchecked_global]
 static mut MY_GLOBAL: u32 = 0;
 
 /// Provided by macro
@@ -14,7 +14,7 @@ pub fn my_global() -> &mut u32;
 If the variable has no initializer, an init function is generated:
 
 ```rust
-#[unsafe_global]
+#[unchecked_global]
 static mut MY_GLOBAL: u32;
 
 /// Provided by macro
