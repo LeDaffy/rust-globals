@@ -13,9 +13,6 @@ impl<T> UninitializedGlobal<T> {
         Self { value: std::mem::ManuallyDrop::new(value) }
     }
 }
-pub const fn uninit_as_mut_ptr<T>(uninit: *mut UninitializedGlobal<T>) -> *mut T {
-    uninit as *mut T
-}
 
 pub const fn uninit_as_ref_mut<T>(uninit: *mut UninitializedGlobal<T>) -> &'static mut T {
     unsafe { &mut *(uninit as *mut T) }

@@ -9,17 +9,19 @@ static mut MY_GLOBAL3: u32;
 #[unsafe_global]
 static mut GLOBAL_STRING: String;
 
-
-
+fn prints(string: &String) {
+    println!("Hello, {}, {}, {}", my_global(), my_global3(), string);
+}
 
 fn main() {
-    my_global3_init(|| { 0 });
-    global_string_init(|| { String::from("asdf") });
+    my_global3_init(0);
+    global_string_init(String::from("asdf"));
     *my_global3() = 14;
     *my_global3() = 23;
-    *global_string() = String::from("asdf");
+    *global_string() = String::from("asdf123");
     (*global_string()).push_str("qwerty");
 
-    println!("Hello, {}, {}, {}", my_global(), my_global3(), global_string());
+    prints(global_string());
+
 
 }

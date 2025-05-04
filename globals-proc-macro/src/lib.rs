@@ -57,9 +57,9 @@ impl quote::ToTokens for Declaration {
                 tokens.extend(quote! {
                     static mut #var_name: globals::UninitializedGlobal<#var_type> = globals::UninitializedGlobal::uninit();
 
-                    pub fn #var_name_init<F: std::ops::FnMut() -> #var_type >(mut f: F) {
+                    pub fn #var_name_init(value: #var_type) {
                         unsafe {
-                            #var_name = globals::UninitializedGlobal::new(f());
+                            #var_name = globals::UninitializedGlobal::new(value);
                         }
                     }
 
